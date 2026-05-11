@@ -1,2 +1,2 @@
-ppdb_sekolah
+*ppdb_sekolah
 buat ppdb
