@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beranda Sekolah</title>
+    <style>
+        :root {
+            --primary: #ff6b6b;
+            --secondary: #5f6cff;
+            --tertiary: #2dd4bf;
+            --surface: #ffffff;
+            --background: #eef6ff;
+            --dark: #102a43;
+            --muted: #52667a;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            font-family: Inter, system-ui, sans-serif;
+            color: var(--dark);
+            background: var(--background);
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(135deg, #5f6cff 0%, #2dd4bf 100%);
+            color: white;
+        }
+        .container {
+            width: min(1100px, calc(100% - 2rem));
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+        .hero {
+            display: grid;
+            gap: 2rem;
+            align-items: center;
+            grid-template-columns: 1fr;
+        }
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin: 0 0 1rem;
+            line-height: 1.05;
+            text-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+        }
+        .hero p {
+            max-width: 44rem;
+            margin: 0 0 1.5rem;
+            font-size: 1.05rem;
+        }
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.95rem 1.6rem;
+            border-radius: 999px;
+            background: var(--surface);
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 20px 45px rgba(47, 69, 108, 0.18);
+        }
+        .hero-image {
+            min-height: 320px;
+            border-radius: 1.5rem;
+            background: radial-gradient(circle at top left, rgba(255,255,255,0.42), transparent 45%),
+                        linear-gradient(135deg, rgba(255,255,255,0.16), rgba(255,255,255,0.04));
+            display: grid;
+            place-items: center;
+            padding: 2rem;
+            border: 1px solid rgba(255,255,255,0.18);
+        }
+        .hero-image img {
+            width: 100%;
+            max-width: 520px;
+            border-radius: 1rem;
+            box-shadow: 0 25px 70px rgba(47, 69, 108, 0.2);
+        }
+        main {
+            padding: 3rem 0;
+        }
+        .grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+        .cards {
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        }
+        .card {
+            background: linear-gradient(180deg, #ffffff 0%, #f4f8ff 100%);
+            border-radius: 1.25rem;
+            padding: 1.75rem;
+            box-shadow: 0 16px 40px rgba(38, 64, 94, 0.1);
+            border: 1px solid rgba(95, 108, 255, 0.12);
+        }
+        .card h3 {
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+            color: var(--secondary);
+        }
+        .card p {
+            margin: 0;
+            color: var(--muted);
+        }
+        .section-title {
+            margin: 0 0 1rem;
+            font-size: 1.65rem;
+            color: var(--dark);
+        }
+        .stat-grid {
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        }
+        .stat {
+            background: linear-gradient(135deg, rgba(255,107,107,0.18), rgba(45,212,191,0.12));
+            border-radius: 1.25rem;
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid rgba(255, 107, 107, 0.14);
+        }
+        .stat strong {
+            display: block;
+            font-size: 2rem;
+            color: var(--primary);
+        }
+        .stat span {
+            color: var(--muted);
+        }
+        .contact {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: 1fr 1fr;
+        }
+        .contact-item {
+            background: white;
+            border-radius: 1.25rem;
+            padding: 1.5rem;
+            box-shadow: 0 16px 42px rgba(38, 64, 94, 0.08);
+            border: 1px solid rgba(95, 108, 255, 0.1);
+        }
+        .contact-item h4 {
+            margin: 0 0 0.5rem;
+            color: var(--secondary);
+        }
+        footer {
+            border-top: 1px solid rgba(95, 108, 255, 0.18);
+            padding: 1.5rem 0 2rem;
+            color: var(--muted);
+            background: white;
+        }
+        @media (min-width: 900px) {
+            .hero {
+                grid-template-columns: 1.05fr 0.95fr;
+            }
+            .contact {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="hero">
+                <div>
+                    <p style="margin:0 0 1rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase; opacity:.85;">Selamat datang di sekolah kami</p>
+                    <h1>Beranda PPDB Sekolah SMK NEGERI 4 PALEMBANG: Unggul, Kompeten, Profesional</h1>
+                    <p>Bersama kami, siswa tumbuh dengan kemampuan akademik, karakter kuat, dan pengalaman penuh kegiatan kreatif. Temukan informasi penting, program unggulan, dan cara bergabung di sekolah kami.</p>
+                    <a href="#informasi" class="btn-primary">Pelajari selengkapnya</a>
+                </div>
+                <div class="hero-image">
+                    <img src="maxresdefault.jpg" alt="Siswa di sekolah">
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="container">
+        <section id="informasi" class="grid">
+            <div>
+                <h2 class="section-title">Mengapa memilih SMK NEGERI 4 PALEMBANG?</h2>
+                <p>SMK NEGERI 4 PALEMBANG menyediakan lingkungan belajar yang aman, inovatif, dan berfokus pada perkembangan setiap siswa. Kami siap membantu anak-anak meraih prestasi akademik sekaligus membangun karakter juara.</p>
+            </div>
+            <div class="cards">
+                <article class="card">
+                    <h3>Program Akademik</h3>
+                    <p>Kurikulum modern dengan dukungan guru berpengalaman dan fasilitas belajar yang lengkap.</p>
+                </article>
+                <article class="card">
+                    <h3>Kegiatan Ekstrakurikuler</h3>
+                    <p>Ekstra basket, robotik, seni, pramuka, pmr, paskibraka dan banyak kegiatan lainnya.</p>
+                </article>
+                <article class="card">
+                    <h3>Pembinaan Karakter</h3>
+                    <p>Pendampingan nilai-nilai disiplin, kepemimpinan, gotong royong, dan tanggung jawab.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="grid" style="margin-top:3rem;">
+            <div>
+                <h2 class="section-title">Fakta Sekolah Kami</h2>
+                <p>Kami berkomitmen memberi pengalaman pendidikan yang bermakna dan mempersiapkan generasi masa depan yang cakap, kreatif, serta kolaboratif.</p>
+            </div>
+            <div class="grid stat-grid">
+                <div class="stat">
+                    <strong>15</strong>
+                    <span>Rombongan belajar</span>
+                </div>
+                <div class="stat">
+                    <strong>120</strong>
+                    <span>Guru Bersertifikat</span>
+                </div>
+                <div class="stat">
+                    <strong>3</strong>
+                    <span>Program unggulan</span>
+                </div>
+                <div class="stat">
+                    <strong>10+</strong>
+                    <span>Kegiatan ekstrakurikuler</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="grid" style="margin-top:3rem;">
+            <div>
+                <h2 class="section-title">Info Pendaftaran</h2>
+                <p>Daftar sekarang untuk mengikuti tahun ajaran baru. Lihat persyaratan, jadwal pendaftaran, dan dokumen yang diperlukan agar proses masuk berjalan lancar.</p>
+            </div>
+            <div class="grid contact">
+                <div class="contact-item">
+                    <h4>Alamat</h4>
+                    <p>jl. sersan sani no.1019, pipa jaya, kec. kemuning, kota palembang, sumatera selatan</p>
+                </div>
+                <div class="contact-item">
+                    <h4>Kontak</h4>
+                    <p>Telepon: (021) 555-1234</p>
+                    <p>Email: smk4.sch.id</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="container">
+            <p style="margin:0; font-size:.95rem;">© 2026 SMK NEGERI 4 PALEMBANG. Semua hak cipta dilindungi.</p>
+        </div>
+    </footer>
+</body>
+</html>
