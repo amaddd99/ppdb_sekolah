@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Pendaftaran PPDB</title>
+    <style>
+        /* Setup dasar biar font gak kaku */
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f4f7f9; /* Biru langit tipis */
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        /* Kotak utama formulir */
+        .kotak-form {
+            max-width: 800px;
+            margin: 30px auto;
+            background: #ffffff;
+            border-top: 6px solid #0056b3; /* Garis biru tebal di atas biar resmi */
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 30px;
+            /* Efek muncul pelan pas buka halaman */
+            animation: munculDikit 0.6s ease-out;
+        }
+
+        @keyframes munculDikit {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .judul-sekolah {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .judul-sekolah h2 {
+            margin: 0;
+            color: #0056b3;
+            font-size: 24px;
+        }
+
+        /* Styling judul bagian (Data Siswa, Ortu, dll) */
+        .label-bagian {
+            background: #e7f1ff;
+            color: #0056b3;
+            padding: 8px 15px;
+            font-weight: bold;
+            font-size: 14px;
+            border-radius: 4px;
+            margin: 25px 0 15px 0;
+            display: inline-block;
+        }
+
+        /* Atur susunan input biar gak berantakan */
+        .baris-input {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+
+        .item-input {
+            flex: 1;
+            min-width: 250px; /* Biar kalau di HP otomatis numpuk ke bawah */
+        }
+
+        .item-input label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; /* Biar padding gak nambah lebar kotak */
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        /* Efek pas kotak input diklik */
+        input:focus, select:focus, textarea:focus {
+            border-color: #0056b3;
+            outline: none;
+            background-color: #fdfdfd;
+        }
+
+        /* Tombol kirim */
+        .tombol-area {
+            text-align: right;
+            margin-top: 30px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+
+        .btn-daftar {
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-daftar:hover {
+            background-color: #003d7a;
+            transform: scale(1.02); /* Tombol membesar dikit pas di-hover */
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="kotak-form">
+        <div class="judul-sekolah">
+            <h2>PENDAFTARAN SISWA BARU</h2>
+            <p style="color: #666; font-size: 14px;">Silahkan isi formulir dengan data yang sebenar-benarnya.</p>
+        </div>
+
+        <form action="#" method="post">
+            
+            <!-- BAGIAN 1: DATA ANAK -->
+            <div class="label-bagian">1. Identitas Calon Siswa</div>
+            
+            <div class="baris-input">
+                <div class="item-input" style="flex: 2;">
+                    <label>Nama Lengkap Anak</label>
+                    <input type="text" name="nama" placeholder="Tulis nama sesuai Akta" required>
+                </div>
+            </div>
+
+            <div class="baris-input">
+                <div class="item-input">
+                    <label>NISN</label>
+                    <input type="text" name="nisn" placeholder="Contoh: 00987xxx">
+                </div>
+                <div class="item-input">
+                    <label>NIK (Nomor Induk Kependudukan)</label>
+                    <input type="text" name="nik" placeholder="Sesuai Kartu Keluarga">
+                </div>
+            </div>
+
+            <div class="baris-input">
+                <div class="item-input">
+                    <label>Tempat Lahir</label>
+                    <input type="text" name="tempat_lahir">
+                </div>
+                <div class="item-input">
+                    <label>Tanggal Lahir</label>
+                    <input type="date" name="tgl_lahir">
+                </div>
+                <div class="item-input">
+                    <label>Jenis Kelamin</label>
+                    <select name="jk">
+                        <option value="L">Laki-laki</option>
+                        <option value="P">Perempuan</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- BAGIAN 2: DATA FISIK -->
+            <div class="label-bagian">2. Keterangan Fisik</div>
+            <div class="baris-input">
+                <div class="item-input">
+                    <label>Tinggi Badan (cm)</label>
+                    <input type="number" name="tinggi">
+                </div>
+                <div class="item-input">
+                    <label>Berat Badan (kg)</label>
+                    <input type="number" name="berat">
+                </div>
+                <div class="item-input">
+                    <label>Agama</label>
+                    <select name="agama">
+                        <option>Islam</option>
+                        <option>Kristen</option>
+                        <option>Lainnya</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- BAGIAN 3: DATA ORANG TUA -->
+            <div class="label-bagian">3. Data Orang Tua / Wali</div>
+            <div class="baris-input">
+                <div class="item-input">
+                    <label>Nama Ayah</label>
+                    <input type="text" name="ayah">
+                </div>
+                <div class="item-input">
+                    <label>Nama Ibu</label>
+                    <input type="text" name="ibu">
+                </div>
+            </div>
+
+            <div class="baris-input">
+                <div class="item-input">
+                    <label>No. HP/WhatsApp Wali</label>
+                    <input type="tel" name="hp" placeholder="Contoh: 081234567xxx" required>
+                </div>
+                <div class="item-input">
+                    <label>Pekerjaan Orang Tua</label>
+                    <input type="text" name="kerja">
+                </div>
+            </div>
+
+            <div class="baris-input">
+                <div class="item-input">
+                    <label>Alamat Rumah Lengkap</label>
+                    <textarea name="alamat" rows="3" placeholder="Nama jalan, RT/RW, Kecamatan..."></textarea>
+                </div>
+            </div>
+
+            <!-- BAGIAN 4: BERKAS -->
+            <div class="label-bagian">4. Dokumen (Opsional)</div>
+            <div class="baris-input">
+                <div class="item-input">
+                    <label>Upload Scan Kartu Keluarga</label>
+                    <input type="file" name="file_kk">
+                </div>
+                <div class="item-input">
+                    <label>Upload Pas Foto 3x4</label>
+                    <input type="file" name="file_foto">
+                </div>
+            </div>
+
+            <!-- TOMBOL DAFTAR -->
+            <div class="tombol-area">
+                <button type="submit" class="btn-daftar">Kirim Pendaftaran Sekarang</button>
+            </div>
+
+        </form>
+    </div>
+
+</body>
+</html>
