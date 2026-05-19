@@ -1,19 +1,114 @@
+<?php
+
+include "koneksi.php";
+
+// REGISTER
+if(isset($_POST['register'])){
+
+  $nama       = mysqli_real_escape_string($conn, $_POST['nama']);
+  $email      = mysqli_real_escape_string($conn, $_POST['email']);
+  $password   = mysqli_real_escape_string($conn, $_POST['password']);
+  $konfirmasi = mysqli_real_escape_string($conn, $_POST['konfirmasi']);
+
+  // VALIDASI PASSWORD
+  if($password != $konfirmasi){
+
+    echo "
+    <script>
+      alert('Konfirmasi password tidak sama!');
+    </script>
+    ";
+
+  } else {
+
+    // CEK EMAIL SUDAH ADA ATAU BELUM
+    $cekEmail = mysqli_query($conn,
+    "SELECT * FROM tb_users WHERE email='$email'");
+
+    if(mysqli_num_rows($cekEmail) > 0){
+
+      echo "
+      <script>
+        alert('Email sudah digunakan!');
+      </script>
+      ";
+
+    } else {
+
+      // ENKRIPSI PASSWORD
+      $passwordHash =
+      password_hash($password, PASSWORD_DEFAULT);
+
+      // INSERT DATABASE
+      $query = "INSERT INTO tb_users
+      (nama,email,password)
+
+      VALUES
+
+      ('$nama','$email','$passwordHash')";
+
+      $insert = mysqli_query($conn,$query);
+
+      if($insert){
+
+        echo "
+        <script>
+          window.onload = function(){
+
+            const popup =
+            document.getElementById('popup');
+
+            popup.classList.add('show');
+
+            setTimeout(() => {
+              popup.classList.remove('show');
+            },3000);
+
+          }
+        </script>
+        ";
+
+      } else {
+
+        echo "
+        <script>
+          alert('Pendaftaran gagal!');
+        </script>
+        ";
+
+      }
+
+    }
+
+  }
+
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport"
+  content="width=device-width, initial-scale=1.0"/>
+
   <title>PPDB Negeri 2026</title>
 
   <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+  rel="stylesheet">
 
   <!-- Font Awesome -->
-  <link rel="stylesheet"
+  <link
+  rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
 
   <!-- Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link
+  href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+  rel="stylesheet">
 
   <style>
 
@@ -36,7 +131,6 @@
       position:relative;
     }
 
-    /* BACKGROUND */
     .circle{
       position:absolute;
       border-radius:50%;
@@ -62,7 +156,6 @@
       opacity:.18;
     }
 
-    /* PARTICLE */
     .particles span{
       position:absolute;
       width:12px;
@@ -94,7 +187,6 @@
       }
     }
 
-    /* CARD */
     .register-card{
       width:100%;
       max-width:470px;
@@ -123,17 +215,16 @@
       }
     }
 
-    /* TOP BAR */
     .top-line{
       position:absolute;
       top:0;
       left:0;
       width:100%;
       height:7px;
-      background:linear-gradient(90deg,#60a5fa,#2563eb,#93c5fd);
+      background:
+      linear-gradient(90deg,#60a5fa,#2563eb,#93c5fd);
     }
 
-    /* LOGO */
     .logo{
       width:95px;
       height:95px;
@@ -157,7 +248,6 @@
       }
     }
 
-    /* TITLE */
     h1{
       text-align:center;
       margin-top:20px;
@@ -173,7 +263,6 @@
       margin-bottom:25px;
     }
 
-    /* STATUS */
     .status-box{
       background:#eff6ff;
       border:1px solid #bfdbfe;
@@ -186,7 +275,6 @@
       font-weight:500;
     }
 
-    /* INPUT */
     .form-label{
       font-weight:600;
       color:#1e3a8a;
@@ -229,7 +317,6 @@
       cursor:pointer;
     }
 
-    /* PASSWORD */
     .strength{
       width:100%;
       height:8px;
@@ -265,7 +352,6 @@
       font-weight:500;
     }
 
-    /* BUTTON */
     .btn-register{
       width:100%;
       padding:15px;
@@ -303,7 +389,6 @@
       left:130%;
     }
 
-    /* LOGIN */
     .bottom-text{
       margin-top:20px;
       text-align:center;
@@ -321,7 +406,6 @@
       text-decoration:underline;
     }
 
-    /* AI BOX */
     .ai-box{
       margin-top:20px;
       background:#f8fbff;
@@ -339,7 +423,6 @@
       }
     }
 
-    /* POPUP */
     .popup{
       position:fixed;
       top:20px;
@@ -375,13 +458,12 @@
 
   </style>
 </head>
+
 <body>
 
-  <!-- Background -->
   <div class="circle circle1"></div>
   <div class="circle circle2"></div>
 
-  <!-- Particle -->
   <div class="particles">
     <span></span>
     <span></span>
@@ -390,12 +472,10 @@
     <span></span>
   </div>
 
-  <!-- Popup -->
   <div class="popup" id="popup">
     ✅ Akun berhasil dibuat!
   </div>
 
-  <!-- CARD -->
   <div class="register-card">
 
     <div class="top-line"></div>
@@ -404,24 +484,29 @@
       <i class="fa-solid fa-school"></i>
     </div>
 
-    <h1>PPDB Negeri 2026</h1>
+    <h1>PPDB SMKN 4 Palembang 2026</h1>
 
     <p class="subtitle">
-      Sistem Penerimaan Peserta Didik Baru
+      Sistem PPDB (Penerimaan Peserta Didik Baru)
     </p>
 
     <div class="status-box">
       🚀 Pendaftaran Gelombang 1 Sedang Dibuka
     </div>
 
-    <form onsubmit="showPopup(event)">
+    <form method="POST">
 
       <label class="form-label">
         Username
       </label>
 
       <div class="input-box">
-        <input type="text" placeholder="Masukkan username">
+        <input
+        type="text"
+        name="nama"
+        placeholder="Masukkan username"
+        required>
+
         <i class="fa-solid fa-user"></i>
       </div>
 
@@ -430,7 +515,12 @@
       </label>
 
       <div class="input-box">
-        <input type="email" placeholder="Masukkan email aktif">
+        <input
+        type="email"
+        name="email"
+        placeholder="Masukkan email aktif"
+        required>
+
         <i class="fa-solid fa-envelope"></i>
       </div>
 
@@ -439,8 +529,15 @@
       </label>
 
       <div class="input-box">
-        <input type="password" id="password" placeholder="Masukkan password">
-        <i class="fa-solid fa-eye" onclick="togglePassword()"></i>
+        <input
+        type="password"
+        id="password"
+        name="password"
+        placeholder="Masukkan password"
+        required>
+
+        <i class="fa-solid fa-eye"
+        onclick="togglePassword()"></i>
       </div>
 
       <div class="strength">
@@ -456,13 +553,23 @@
       </label>
 
       <div class="input-box">
-        <input type="password" placeholder="Konfirmasi password">
+        <input
+        type="password"
+        name="konfirmasi"
+        placeholder="Konfirmasi password"
+        required>
+
         <i class="fa-solid fa-lock"></i>
       </div>
 
-      <button class="btn-register">
+      <button
+      type="submit"
+      name="register"
+      class="btn-register">
+
         <i class="fa-solid fa-paper-plane"></i>
         Register Sekarang
+
       </button>
 
       <div class="bottom-text">
@@ -471,7 +578,6 @@
       </div>
 
       <div class="ai-box">
-        🤖 Sistem AI:
         Gunakan email aktif untuk menerima informasi hasil seleksi PPDB.
       </div>
 
@@ -481,7 +587,6 @@
 
   <script>
 
-    // SHOW PASSWORD
     function togglePassword(){
 
       const password =
@@ -492,22 +597,6 @@
       }else{
         password.type = "password";
       }
-
-    }
-
-    // POPUP
-    function showPopup(event){
-
-      event.preventDefault();
-
-      const popup =
-      document.getElementById("popup");
-
-      popup.classList.add("show");
-
-      setTimeout(() => {
-        popup.classList.remove("show");
-      },3000);
 
     }
 
