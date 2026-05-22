@@ -40,7 +40,7 @@ if(isset($_POST['register'])){
       password_hash($password, PASSWORD_DEFAULT);
 
       // INSERT DATABASE
-      $query = "INSERT INTO tb_users
+      $query = "INSERT INTO tb_users!
       (nama,email,password)
 
       VALUES
